@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 433 118 8 25 0 433 118 8 25 1 0

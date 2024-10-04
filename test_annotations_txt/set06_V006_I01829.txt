@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 90 142 19 31 0 90 142 19 31 1 0

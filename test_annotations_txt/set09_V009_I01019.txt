@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 434 123 8 20 0 434 123 8 20 1 0

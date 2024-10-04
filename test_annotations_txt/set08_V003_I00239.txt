@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 45 212 13 43 0 45 212 13 43 1 0

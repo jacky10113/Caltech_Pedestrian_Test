@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 514 93 15 28 0 514 93 15 28 1 0

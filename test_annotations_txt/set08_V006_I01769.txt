@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 509 81 14 25 0 509 81 14 25 1 0

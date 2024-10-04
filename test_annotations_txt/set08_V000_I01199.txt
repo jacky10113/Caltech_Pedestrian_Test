@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 506 181 9 23 0 506 181 9 23 1 0

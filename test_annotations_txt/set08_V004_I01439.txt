@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 485 12 31 24 0 485 12 31 24 1 0

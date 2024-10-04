@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 443 171 8 25 0 443 171 8 25 1 0

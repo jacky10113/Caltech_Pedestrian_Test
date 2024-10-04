@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 544 128 8 20 0 544 128 8 20 1 0

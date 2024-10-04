@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 399 161 6 10 0 399 161 6 10 1 0

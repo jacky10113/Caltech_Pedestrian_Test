@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 571 144 8 10 0 571 144 8 10 1 0

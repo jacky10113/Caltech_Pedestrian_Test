@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 279 203 6 18 0 279 203 6 18 1 0

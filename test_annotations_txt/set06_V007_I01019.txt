@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 588 19 18 28 0 588 19 18 28 1 0

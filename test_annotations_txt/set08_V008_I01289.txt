@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 345 199 4 16 0 345 199 4 16 1 0

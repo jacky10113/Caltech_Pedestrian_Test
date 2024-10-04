@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 260 193 5 16 0 260 193 5 16 1 0

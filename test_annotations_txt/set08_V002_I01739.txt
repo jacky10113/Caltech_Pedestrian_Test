@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 484 186 7 10 0 484 186 7 10 1 0

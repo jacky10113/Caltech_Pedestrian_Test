@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 24 172 8 9 0 24 172 8 9 1 0

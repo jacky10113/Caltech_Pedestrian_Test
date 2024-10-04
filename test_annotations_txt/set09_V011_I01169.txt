@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 511 137 6 11 0 511 137 6 11 1 0

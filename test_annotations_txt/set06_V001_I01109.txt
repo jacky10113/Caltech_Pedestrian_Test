@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 572 187 9 40 0 572 187 9 40 1 0

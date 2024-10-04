@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 177 198 5 7 0 177 198 5 7 1 0

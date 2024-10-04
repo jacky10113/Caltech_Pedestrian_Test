@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 401 167 7 29 0 401 167 7 29 1 0

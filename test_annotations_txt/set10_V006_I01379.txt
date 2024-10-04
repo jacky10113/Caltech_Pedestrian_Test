@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 381 143 9 14 0 381 143 9 14 1 0

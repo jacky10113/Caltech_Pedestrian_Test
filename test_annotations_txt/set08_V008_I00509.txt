@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 267 196 6 17 0 267 196 6 17 1 0

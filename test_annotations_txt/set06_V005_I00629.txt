@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 439 99 10 28 0 439 99 10 28 1 0

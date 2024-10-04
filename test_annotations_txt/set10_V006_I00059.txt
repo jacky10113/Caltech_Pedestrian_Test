@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 407 86 28 21 0 407 86 28 21 1 0

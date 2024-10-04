@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 479 58 16 46 0 479 58 16 46 1 0

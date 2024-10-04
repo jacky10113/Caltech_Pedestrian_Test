@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 479 152 7 33 0 479 152 7 33 1 0

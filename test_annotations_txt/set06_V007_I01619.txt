@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 80 215 9 26 0 80 215 9 26 1 0

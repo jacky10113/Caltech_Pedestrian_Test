@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 35 199 28 44 0 35 199 28 44 1 0

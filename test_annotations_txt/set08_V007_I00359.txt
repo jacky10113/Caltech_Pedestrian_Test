@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 422 184 5 18 0 422 184 5 18 1 0

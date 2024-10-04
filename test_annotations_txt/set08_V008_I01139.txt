@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 120 212 10 8 0 120 212 10 8 1 0

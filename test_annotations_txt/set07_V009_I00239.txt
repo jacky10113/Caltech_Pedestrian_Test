@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 345 61 64 25 0 345 61 64 25 1 0

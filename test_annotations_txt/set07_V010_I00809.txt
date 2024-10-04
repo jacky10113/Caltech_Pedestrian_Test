@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 93 209 52 39 0 93 209 52 39 1 0

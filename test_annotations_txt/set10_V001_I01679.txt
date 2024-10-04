@@ -1,0 +1,2 @@
+% bbGt version=3
+ignore 556 43 22 43 0 556 43 22 43 1 0
