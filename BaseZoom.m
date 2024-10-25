@@ -466,61 +466,59 @@ classdef BaseZoom < handle
             end
         end
 
-        function mappingParams = computeMappingParams(this)
-            switch this.XAxis.scale
-                case 'linear'
-                    rangeXLim = this.mainAxes.XLim(1, 2)-this.mainAxes.XLim(1, 1);
-                case 'log'
-                     
-                    % XLim(1)<=0,set 0.0001
-                    xlim1 = this.mainAxes.XLim(1, 1);
-                    xlim2 = this.mainAxes.XLim(1, 2);                   
-                    if xlim1 <= 0
-                        xlim1 = 0.0001;  
-                    elseif xlim2<=0
-                        xlim2 = 0.0001;  
-                    end
-                    
-                    rangeXLim = log10(xlim2) - log10(xlim1);
-                    %rangeXLim = log10(this.mainAxes.XLim(1, 2))-log10(this.mainAxes.XLim(1, 1));
-            end
-            map_k_x = rangeXLim/this.mainAxes.Position(3);
-            switch this.YAxis.(this.direction).scale
-                case 'linear'
-                    rangeYLim = this.mainAxes.YLim(1, 2)-this.mainAxes.YLim(1, 1);
-                case 'log'
-                    ylim1 = this.mainAxes.YLim(1, 1);
-                    ylim2 = this.mainAxes.YLim(1, 2);                   
-                    if ylim1 <= 0
-                        ylim1 = 0.0001;  
-                    elseif ylim2<=0
-                        ylim2 = 0.0001;  
-                    end
-                    rangeYLim = log10(ylim2)-log10(ylim1);
-                    %rangeYLim = log10(this.mainAxes.YLim(1, 2))-log10(this.mainAxes.YLim(1, 1));
-            end
-            map_k_y = rangeYLim/this.mainAxes.Position(4);
-            switch this.XAxis.scale
-                case 'linear'
-                    map_b_x = this.mainAxes.XLim(1)-this.mainAxes.Position(1)*map_k_x;
-                case 'log'
-                    Xlim1 = this.mainAxes.XLim(1);
-                                   
-                    if Xlim1 <= 0
-                        Xlim1 = 0.0001;  
-                    end
+            function mappingParams = computeMappingParams(this)
+                            % 1. 确保X轴范围的计算
+                            switch this.XAxis.scale
+                                case 'linear'
+                                    rangeXLim = this.mainAxes.XLim(2) - this.mainAxes.XLim(1);
+                                case 'log'
+                                    % 避免负值输入log10
+                                    xlim1 = max(this.mainAxes.XLim(1), 0.0001);
+                                    xlim2 = max(this.mainAxes.XLim(2), 0.0001);
+                                    rangeXLim = log10(xlim2) - log10(xlim1);
+                            end
+                            %map_k_x = rangeXLim / this.mainAxes.Position(3);  % X轴比例
+                            map_k_x = round(rangeXLim / this.mainAxes.Position(3), 10);
+                        
+                            % 2. 处理Y轴范围的计算
+                            switch this.YAxis.(this.direction).scale
+                                case 'linear'
+                                    rangeYLim = this.mainAxes.YLim(2) - this.mainAxes.YLim(1);
+                                case 'log'
+                                    ylim1 = max(this.mainAxes.YLim(1), 0.0001);
+                                    ylim2 = max(this.mainAxes.YLim(2), 0.0001);
+                                    rangeYLim = log10(ylim2) - log10(ylim1);
+                            end
+                            %map_k_y = rangeYLim / this.mainAxes.Position(4);  % Y轴比例
+                            map_k_y = round(rangeYLim / this.mainAxes.Position(4), 10);
+                        
+                            % 3. X轴偏移计算
+                            switch this.XAxis.scale
+                                case 'linear'
+                                    map_b_x = this.mainAxes.XLim(1) - this.mainAxes.Position(1) * map_k_x;
+                                case 'log'
+                                    Xlim1 = max(this.mainAxes.XLim(1), 0.0001);
+                                    map_b_x = log10(Xlim1) - this.mainAxes.Position(1) * map_k_x;
+                            end
+                        
+                            % 4. Y轴偏移计算
+                            switch this.YAxis.(this.direction).scale
+                                case 'linear'
+                                    map_b_y = this.mainAxes.YLim(1) - this.mainAxes.Position(2) * map_k_y;
+                                case 'log'
+                                    Ylim1 = max(this.mainAxes.YLim(1), 0.0001);
+                                    map_b_y = log10(Ylim1) - this.mainAxes.Position(2) * map_k_y;
+                            end
+                        
+                            % 5. 显示映射参数，用于调试
+                            disp('Mapping Parameters:');
+                            disp([map_k_x, map_b_x; map_k_y, map_b_y]);
+                        
+                            % 6. 返回映射参数
+                            mappingParams = [map_k_x, map_b_x; map_k_y, map_b_y];
+                end
 
-                    map_b_x = log10(Xlim1)-this.mainAxes.Position(1)*map_k_x;
-            end
-            switch this.YAxis.(this.direction).scale
-                case 'linear'
-                    map_b_y = this.mainAxes.YLim(1)-this.mainAxes.Position(2)*map_k_y;
-                case 'log'
-                    map_b_y = log10(this.mainAxes.YLim(1))-this.mainAxes.Position(2)*map_k_y;
-            end
-            disp([map_k_x, map_b_x; map_k_y, map_b_y])
-            mappingParams = [map_k_x, map_b_x; map_k_y, map_b_y];
-        end
+
 
         function connectAxesAndBox(this)
             % insert lines between the inserted axes and rectangle
@@ -592,6 +590,8 @@ classdef BaseZoom < handle
                             this.axesPosition(this.lineDirection(i, 2), 2)];
                         pos1 = this.transformCoordinate(tmp1, 'a2n');
                         pos2 = this.transformCoordinate(tmp2, 'a2n');
+
+                         
                         this.figureArrow{i} = annotation(gcf, 'doublearrow',...
                             [pos1(1, 1), pos2(1, 1)], [pos1(1, 2), pos2(1, 2)],...
                             'Color', this.param.connection.LineColor,...

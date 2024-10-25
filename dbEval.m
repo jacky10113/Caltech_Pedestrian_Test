@@ -129,6 +129,7 @@ for d=1:nDt, fprintf(f,'%s %f\n',stra{d},scores1(1,d)); end; fclose(f);
         191/255, 239/255, 69/255;  % Light Green
         250/255, 190/255, 190/255; % Light Pink
         230/255, 25/255, 75/255;   % Red
+        128/255, 0/255, 0/255;     % Maroon (New color)
     ];
  % Title
  if(expsIndex==1),hTitle='Performance Comparison on Reasonable Subset';
@@ -228,13 +229,6 @@ for p=1:nPlots
   else
     xs1=xs(p,:); ys1=ys(p,:); fName1=[fName stre{p}]; lgd1=stra;
     for d=1:nDt, lgd1{d}=sprintf('%.2f%% %s',scores1(p,d),stra{d}); end
-    % Filter each curve and ignore the parts where fppi>1
-    for i = 1:numel(xs1)
-        valid_idx = xs1{i} <= 1;  
-        xs1{i} = xs1{i}(valid_idx);  
-        ys1{i} = ys1{i}(valid_idx);  
-    end
-    
     kp=[find(strcmp(stra,'VJ')) find(strcmp(stra,'HOG')) 1 1];
     [~,ord]=sort(scores(p,:)); 
 %     kp=ord==kp(1)|ord==kp(2); j=find(cumsum(~kp)>=plotNum-2); 
@@ -270,15 +264,12 @@ for p=1:nPlots
   else
     x=1; for i=1:n, x=max(x,max(xs1{i})); end, x=min(x-mod(x,.1),1.0);
     y=.8; for i=1:n, y=min(y,min(ys1{i})); end, y=max(y-mod(y,.1),.01);
-
-    % Set the maximum value of the x-axis to 1
-    xlim([min(cellfun(@(x) min(x), xs1)), 1]);
-    ylim([y, 1]); set(gca,'xtick',0:.1:1);
+    
+    xlim([0, x]);ylim([y, 1]); set(gca,'xtick',0:.1:1);
     xlabel('Recall','FontSize',20,'FontName', 'Times New Roman'); ylabel('Precision','FontSize',20,'FontName', 'Times New Roman');
   end  
 
-  % h1=legend(h,lgd1,'Location','sw','FontSize',11); legend(h1,'boxoff'); 
-  % h1=legend(h,lgd1,'Location','SouthEastOutside','FontSize',11); legend(h1,'boxoff'); 
+
   % Only bold the last item
   lgd1{end} = ['\bf{' lgd1{end} '}'];  
   lgd = legend(h,lgd1,'FontSize', 12,   'FontName', 'Times New Roman');
