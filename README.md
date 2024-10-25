@@ -1,4 +1,4 @@
-  This program is used to test the performance of the 11 object detect algorithms, including DAEAR-DETR, RT-DETR, DINO-DETR, DAB-DETR, Conditional DETR, Deformable DETR, DETR, YOLOv8, YOLOv9, Swin Transformer, Faster Rcnn, etc., on the Caltech Pedestrian Dataset (built with a frame interval of 30) 
+  This program is used to test the performance of the 12 object detect algorithms, including DAEAR-DETR, RT-DETR, DINO-DETR, DAB-DETR, Conditional DETR, Deformable DETR, DETR, YOLOv8, YOLOv9, Swin Transformer, Faster Rcnn, F2DNet, on the Caltech Pedestrian Dataset (built with a frame interval of 30) 
 
 1.Running environment
 
